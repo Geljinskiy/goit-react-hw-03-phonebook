@@ -1,19 +1,13 @@
 import React from 'react';
 
-import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
 import Filter from './FIlter';
-import Box from './Box';
+import Box from './Common/Box';
 
-const MainHeading = styled.h1`
-  margin-bottom: 32px;
-`
-const Heading = styled.h2`
-  margin-bottom: 32px;
-`
+import css from './Common/Common.module.css';
 
 export class App extends React.Component {
   state = {
@@ -27,9 +21,11 @@ export class App extends React.Component {
   };
 
   onAddingContact = ({ name, number }) => {
-    if (
-      this.state.contacts.filter(contact => contact.name === name).length > 0
-    ) {
+    const isExist = this.state.contacts.filter(
+      contact => contact.name === name
+    ).length;
+
+    if (isExist) {
       alert(`${name} is already in contacts.`);
       return;
     }
@@ -76,14 +72,14 @@ export class App extends React.Component {
   render() {
     const visibleContacts = this.getVisibleContacts();
     return (
-      <Box mt={ 40 } ml={40}>
+      <Box mt={40} ml={40}>
         <Box mb={32} fontSize={18} width={380}>
-          <MainHeading>Phonebook</MainHeading>
+          <h1 className={css.heading}>Phonebook</h1>
           <ContactForm addContact={this.onAddingContact} />
         </Box>
 
         <Box fontSize={18} width={360}>
-          <Heading>Contacts</Heading>
+          <h2 className={css.heading}>Contacts</h2>
           <Filter filter={this.state.filter} onFilter={this.onFilter} />
           <ContactList contacts={visibleContacts} onDelete={this.onDelete} />
         </Box>

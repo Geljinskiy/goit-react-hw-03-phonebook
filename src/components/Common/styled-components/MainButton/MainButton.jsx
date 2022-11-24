@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 const MainButtonStyle = styled.button`
   max-width: 110px;
   padding: 4px;

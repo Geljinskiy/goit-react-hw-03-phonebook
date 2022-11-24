@@ -1,4 +1,6 @@
-import Label from 'components/Label';
+import PropTypes from 'prop-types';
+
+import Label from 'components/Common/Label';
 
 const Filter = ({ onFilter, filter }) => {
   return (
@@ -10,3 +12,8 @@ const Filter = ({ onFilter, filter }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  onFilter: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+};

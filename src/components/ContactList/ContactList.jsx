@@ -1,38 +1,24 @@
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import MainButtonStyle from 'components/MainButtonStyle';
+import css from './ContactList.module.css';
 
-const ContactItem = styled.span`
-  margin-right: 16px;
-  font-size: 20px;
-`;
-
-const ListItem = styled.li`
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
-`;
-
-const ListWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+import MainButtonStyle from 'components/Common/MainButton';
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => {
         return (
-          <ListItem key={id}>
-            <ListWrapper>
-              <ContactItem>
+          <li className={css.listItem} key={id}>
+            <div className={css.listWrapper}>
+              <span className={css.contactItem}>
                 {name}: {number}
-              </ContactItem>
+              </span>
               <MainButtonStyle onClick={() => onDelete(id)} type="button">
                 Delete
               </MainButtonStyle>
-            </ListWrapper>
-          </ListItem>
+            </div>
+          </li>
         );
       })}
     </ul>
@@ -40,3 +26,14 @@ const ContactList = ({ contacts, onDelete }) => {
 };
 
 export default ContactList;
+
+ContactList.propsTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  onDelete: PropTypes.func.isRequired,
+};

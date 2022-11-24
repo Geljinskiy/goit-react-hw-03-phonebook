@@ -1,16 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
-
-import MainButtonStyle from 'components/MainButtonStyle';
-import Label from 'components/Label';
-
-const FormWrapper = styled.form`
-  border: 1px solid #000000;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-`;
+import MainButtonStyle from 'components/Common/MainButton';
+import Label from 'components/Common/Label';
+import Form from 'components/Common/styled-components/Form';
 
 export default class ContactForm extends React.Component {
   state = {
@@ -33,7 +26,7 @@ export default class ContactForm extends React.Component {
 
   render() {
     return (
-      <FormWrapper onSubmit={this.onFormSubmit}>
+      <Form onSubmit={this.onFormSubmit}>
         <Label>
           <p>Name</p>
           <input
@@ -59,7 +52,11 @@ export default class ContactForm extends React.Component {
           />
         </Label>
         <MainButtonStyle type="submit">Add to contact</MainButtonStyle>
-      </FormWrapper>
+      </Form>
     );
   }
 }
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};
