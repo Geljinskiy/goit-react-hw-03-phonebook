@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Label from 'components/Common/Label';
+import Label from 'components/Common/styled-components/Label';
 
 const Filter = ({ onFilter, filter }) => {
   return (

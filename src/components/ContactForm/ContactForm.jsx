@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MainButtonStyle from 'components/Common/MainButton';
-import Label from 'components/Common/Label';
+import MainButtonStyle from 'components/Common/styled-components/MainButton';
+import Label from 'components/Common/styled-components/Label';
 import Form from 'components/Common/styled-components/Form';
 
 export default class ContactForm extends React.Component {

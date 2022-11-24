@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import css from './ContactList.module.css';
 
-import MainButtonStyle from 'components/Common/MainButton';
+import MainButtonStyle from 'components/Common/styled-components/MainButton';
 
 const ContactList = ({ contacts, onDelete }) => {
   return (
