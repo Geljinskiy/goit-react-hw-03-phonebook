@@ -22,6 +22,7 @@ export default class ContactForm extends React.Component {
     addContact({ name: this.state.name, number: this.state.number });
 
     ev.currentTarget.reset();
+    this.setState({ name: '', number: '' });
   };
 
   render() {

@@ -27,9 +27,11 @@ export class App extends React.Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
-    localStorage.setItem('savedContacts', JSON.stringify(contacts));
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('savedContacts', JSON.stringify(contacts));
+    }
   }
 
   onAddingContact = ({ name, number }) => {
